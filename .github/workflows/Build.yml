@@ -17,6 +17,6 @@ jobs:
           arch: arm64
           aosp-gcc: true
           aosp-clang: true
-          android-version: 12
-          aosp-clang-version: r383902
+          android-version: 13
+          aosp-clang-version: r407598
           nethunter: true
