@@ -3,6 +3,18 @@ on:
   workflow_dispatch:
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Download AOSP clang
+      run: |
+        mkdir -p /home/runner/clang
+        wget -O /home/runner/clang/clang-r428724.tar.gz https://kali.download/nethunter-images/toolchains/clang-r416183b1.tar.gz
+
+jobs:
   Build-Kernel:
     strategy:
       fail-fast: false
