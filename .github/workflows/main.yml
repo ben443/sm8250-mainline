@@ -22,6 +22,8 @@ jobs:
         export CROSS_COMPILE=aarch64-linux-gnu-
         make sm8250_defconfig
         make -j$(nproc) Image dtbs modules vmlinux
+        make modules_install INSTALL_MOD_PATH=modules/lib/modules make modules_install INSTALL_MOD_PATH=sm8250-samsung-r8q
+
 
     - name: Create Artifact Directory
       run: mkdir -p artifacts
