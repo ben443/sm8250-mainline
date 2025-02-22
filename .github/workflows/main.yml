@@ -30,8 +30,6 @@ jobs:
       run: |
         cp arch/arm64/boot/Image artifacts/
        
-    find . -name '*.ko' -exec cp {} artifacts/ \;
-
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
