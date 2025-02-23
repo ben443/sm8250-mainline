@@ -7,7 +7,7 @@
 
  /dts-v1/;
 
- #include <dt-bindings/pinctrl/qcom,pmic-gpio.h>
+ #include <dt-bindings/pinctrl/qcom-pmic-gpio.h>  // Fixed hyphen
  #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
  #include "sm8250.dtsi"
  #include "pm8150.dtsi"
