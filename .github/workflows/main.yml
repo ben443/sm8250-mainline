@@ -15,20 +15,24 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y build-essential libncurses5-dev bison flex libssl-dev libelf-dev gcc-aarch64-linux-gnu
+
     - name: Build Kernel
       run: |
         export ARCH=arm64
         export CROSS_COMPILE=aarch64-linux-gnu-
         make linux_defconfig sm8250.config
         make -j$(nproc) Image dtbs modules vmlinux
+
     - name: Create Artifact Directory
       run: mkdir -p artifacts
 
     - name: Copy Artifacts
       run: |
         cp arch/arm64/boot/Image artifacts/
-        find . -name '*.ko' -exec cp {} artifacts/ \;
-       
+        cp vmlinux artifacts/
+        find arch/arm64/boot/dts -name '*.dtb' -exec cp {} artifacts/ \;
+        find . -name '*.ko' -exec cp --parents {} artifacts/ \;
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
