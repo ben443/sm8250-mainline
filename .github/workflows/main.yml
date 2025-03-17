@@ -30,7 +30,6 @@ jobs:
       run: |
         cp arch/arm64/boot/Image artifacts/
         cp vmlinux artifacts/
-        cp lib/* artifacts/
         find arch/arm64/boot/dts -name '*.dtb' -exec cp {} artifacts/ \;
         find . -name '*.ko' -exec cp --parents {} artifacts/ \;
 
