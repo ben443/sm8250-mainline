@@ -22,6 +22,7 @@ jobs:
         export CROSS_COMPILE=aarch64-linux-gnu-
         make r8q_defconfig sm8250.config modules.config
         make ARCH=arm64 -j$(nproc) Image dtbs modules
+        make INSTALL_MOD_PATH=out/modules/ modules_install
 
     - name: Create Artifact Directory
       run: mkdir -p artifacts
@@ -29,6 +30,7 @@ jobs:
     - name: Copy Artifacts
       run: |
         cp arch/arm64/boot/Image artifacts/
+        cp out/modules/* artifacts/
         find arch/arm64/boot/dts -name '*.dtb' -exec cp {} artifacts/ \;
         find . -name '*.ko' -exec cp --parents {} artifacts/ \;
 
