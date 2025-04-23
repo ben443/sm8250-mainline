@@ -20,8 +20,8 @@
 /delete-node/ &rmtfs_mem;
 
 / {
-	model = "Samsung Galaxy Device";
-	compatible = "samsung,r8q", "qcom,sm8250";
+	model = "Qualcomm Technologies, Inc. kona v2.1 SoC";
+	compatible = "samsung,r8q", "qcom,sm8250", "qcom,kona";
 	chassis-type = "handset";
 
 	aliases {
