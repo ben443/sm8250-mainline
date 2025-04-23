@@ -21,7 +21,7 @@ jobs:
         export ARCH=arm64
         export CROSS_COMPILE=aarch64-linux-gnu-
         make r8q_defconfig sm8250.config modules.config
-        make ARCH=arm64 -j$(nproc) Image dtbs modules
+        make ARCH=arm64 -j$(nproc)
         make INSTALL_MOD_PATH=out/modules/ modules_install
 
     - name: Create Artifact Directory
