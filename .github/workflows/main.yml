@@ -21,7 +21,7 @@ jobs:
         export ARCH=arm64
         export CROSS_COMPILE=aarch64-linux-gnu-
         make r8q_defconfig sm8250.config modules.config
-        make -j$(nproc) Image dtbs modules vmlinux
+        make ARCH=arm64 -j$(nproc) Image dtbs modules
 
     - name: Create Artifact Directory
       run: mkdir -p artifacts
@@ -29,7 +29,6 @@ jobs:
     - name: Copy Artifacts
       run: |
         cp arch/arm64/boot/Image artifacts/
-        cp vmlinux artifacts/
         find arch/arm64/boot/dts -name '*.dtb' -exec cp {} artifacts/ \;
         find . -name '*.ko' -exec cp --parents {} artifacts/ \;
 
